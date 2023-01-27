@@ -44,6 +44,9 @@ public class CandidateAcademicInfo {
     @setter
     samara
 
+    @setter
+    mufaddal;
+
     // @Setter
     // private String Certificates;
     // private List<MultipartFile> Certificates;
