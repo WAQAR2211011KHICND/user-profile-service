@@ -41,7 +41,7 @@ public class CandidateAcademicInfoController {
     @GetMapping("")
     public String getAllAcademicInformation(){
         // return academicInfoService.getAllAcademicInformation();
-        return "samra";
+        return "samra almas";
     }
 
     @GetMapping("/{id}")
