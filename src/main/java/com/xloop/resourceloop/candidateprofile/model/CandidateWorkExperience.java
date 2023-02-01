@@ -2,6 +2,8 @@ package com.xloop.resourceloop.candidateprofile.model;
 
 import java.sql.Date;
 
+import com.xloop.resourceloop.candidateprofile.model.control_vocabulary.JobType_Enum;
+
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -20,7 +22,7 @@ public class CandidateWorkExperience {
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private String jobType;
+    private JobType_Enum jobType;
 
     @Column( nullable = false)
     private String companyName;
@@ -35,7 +37,7 @@ public class CandidateWorkExperience {
     @Column( nullable = false)
     private Long user_id;
 
-    public CandidateWorkExperience(String jobTitle, String jobType, String companyName, Boolean currentWorkingHere,
+    public CandidateWorkExperience(String jobTitle, JobType_Enum jobType, String companyName, Boolean currentWorkingHere,
             Date startDate, Date endDate, Long user_id) {
         this.jobTitle = jobTitle;
         this.jobType = jobType;
