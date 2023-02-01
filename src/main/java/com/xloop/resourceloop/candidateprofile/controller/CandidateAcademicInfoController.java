@@ -30,16 +30,18 @@ public class CandidateAcademicInfoController {
     @Autowired
     public CandidateAcademicInfoService academicInfoService;
     
-    @PostMapping
-    public ResponseEntity<CandidateAcademicInfo> createAcademicInformation( @RequestBody CandidateAcademicInfo academicInformation) 
+    @PostMapping("")
+    public String createAcademicInformation( @RequestBody CandidateAcademicInfo academicInformation) 
     {
-            CandidateAcademicInfo createdAcademicInformation = academicInfoService.createAcademicInformation(academicInformation);
-            return new ResponseEntity<CandidateAcademicInfo>(createdAcademicInformation, HttpStatus.CREATED); 
-        }
+            // CandidateAcademicInfo createdAcademicInformation = academicInfoService.createAcademicInformation(academicInformation);
+            // return new ResponseEntity<CandidateAcademicInfo>(createdAcademicInformation, HttpStatus.CREATED); 
+            return "samra";
+         }
         
-    @GetMapping
-    public List<CandidateAcademicInfo> getAllAcademicInformation(){
-        return academicInfoService.getAllAcademicInformation();
+    @GetMapping("")
+    public String getAllAcademicInformation(){
+        // return academicInfoService.getAllAcademicInformation();
+        return "samra";
     }
 
     @GetMapping("/{id}")
