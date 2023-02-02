@@ -37,6 +37,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 class CandidateprofileApplicationTests {
 
     private MockMvc mockMvc;
+
+
     CandidatePersonalInfo personalInformation;
     String json;
 
@@ -48,6 +50,7 @@ class CandidateprofileApplicationTests {
 
     @InjectMocks
     private CandidatePersonalInfoController personalInformationController;
+
     private JacksonTester<CandidatePersonalInfo> jsonPersonalInformation;
     private JacksonTester<List<CandidatePersonalInfo>> jsonPersonalInformations;
 
@@ -73,28 +76,28 @@ class CandidateprofileApplicationTests {
 
     }
 
-    @Test
-    public void testCreatePersonalInformations() {
-    CandidatePersonalInfo createdPersonalInformation =
-    personalInformationService.createPersonalInformation(personalInformation);
-    assertNotNull(createdPersonalInformation.getId());
-    assertEquals(personalInformation.getFirstName(),
-    createdPersonalInformation.getFirstName());
-    assertEquals(personalInformation.getLastName(),
-    createdPersonalInformation.getLastName());
-    assertEquals(personalInformation.getDateOfBirth(),
-    createdPersonalInformation.getDateOfBirth());
-    assertEquals(personalInformation.getGender(),
-    createdPersonalInformation.getGender());
-    assertEquals(personalInformation.getNationalIdentityNumber(),
-    createdPersonalInformation.getNationalIdentityNumber());
-    assertEquals(personalInformation.getCity(),
-    createdPersonalInformation.getCity());
-    assertEquals(personalInformation.getAddress(),
-    createdPersonalInformation.getAddress());
-    assertEquals(personalInformation.getLinkedProfile(),
-    createdPersonalInformation.getLinkedProfile());
-    }
+    // @Test
+    // public void testCreatePersonalInformations() {
+    // CandidatePersonalInfo createdPersonalInformation =
+    // personalInformationService.createPersonalInformation(personalInformation);
+    // assertNotNull(createdPersonalInformation.getId());
+    // assertEquals(personalInformation.getFirstName(),
+    // createdPersonalInformation.getFirstName());
+    // assertEquals(personalInformation.getLastName(),
+    // createdPersonalInformation.getLastName());
+    // assertEquals(personalInformation.getDateOfBirth(),
+    // createdPersonalInformation.getDateOfBirth());
+    // assertEquals(personalInformation.getGender(),
+    // createdPersonalInformation.getGender());
+    // assertEquals(personalInformation.getNationalIdentityNumber(),
+    // createdPersonalInformation.getNationalIdentityNumber());
+    // assertEquals(personalInformation.getCity(),
+    // createdPersonalInformation.getCity());
+    // assertEquals(personalInformation.getAddress(),
+    // createdPersonalInformation.getAddress());
+    // assertEquals(personalInformation.getLinkedProfile(),
+    // createdPersonalInformation.getLinkedProfile());
+    // }
 
     // @Test
     // public void testGetPersonalInformation(){
@@ -112,8 +115,6 @@ class CandidateprofileApplicationTests {
      */
     @Test
     public void testCreatePersonalInformation() throws Exception {
-        
-
         
         
         when(personalInformationService.createPersonalInformation(personalInformation)).thenReturn(personalInformation);

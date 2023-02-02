@@ -1,24 +1,23 @@
 package com.xloop.resourceloop.candidateprofile.model;
 
+import java.sql.Date;
+
 import com.fasterxml.jackson.annotation.JsonFormat;
 
-import java.time.LocalDate;
-import java.util.Date;
-
 import jakarta.persistence.*;
-import jakarta.persistence.Table;
+import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-
 @Getter
-@Entity
+
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "candidate_academic_information")
-public class CandidateAcademicInfo {
+@Entity
+@Table(name = "candidate_work_experience")
+public class CandidateWorkExperienceInfo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -26,22 +25,23 @@ public class CandidateAcademicInfo {
     @Setter
     private Long userId;
     @Setter
-    private String currentDegree;
+    private String company;
     @Setter
-    private String title;
-    @Setter
-    private String institute;
-    @Setter
-    private String degreeProgress;
+    private String currentStatus;
 
     @Setter
     @Column(columnDefinition = "date")
     @JsonFormat(pattern = "yyyy-MM-dd")
-    private Date graduationDate;
-    @Setter
-    private String cgpa; //marks
-    @Setter
-    private String finalYearProject;
+    private Date startDate;
 
+    @Setter
+    @Column(columnDefinition = "date")
+    @JsonFormat(pattern = "yyyy-MM-dd")
+    private Date endDate;
+
+    @Setter
+    private String jobTitle;
+    @Setter
+    private String jobType;
 
 }
