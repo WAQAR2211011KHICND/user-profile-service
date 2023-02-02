@@ -1,12 +1,15 @@
 package com.xloop.resourceloop.candidateprofile.repository;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
 
-import com.xloop.resourceloop.candidateprofile.model.CandidatePersonalInfo;
-import com.xloop.resourceloop.candidateprofile.model.CandidateWorkExperience;
+import com.xloop.resourceloop.candidateprofile.model.CandidateWorkExperienceInfo;
 
-@Repository
-public interface ICandidateWorkExperienceRepository extends JpaRepository<CandidateWorkExperience, Long>{
-    // public CandidatePersonalInfo findByUserId(Long userId);
+
+
+public interface ICandidateWorkExperienceRepository extends JpaRepository<CandidateWorkExperienceInfo, Long> {
+
+    public List<CandidateWorkExperienceInfo> findAllByUserId(Long userId);
+    
 }

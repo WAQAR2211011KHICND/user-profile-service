@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.xloop.resourceloop.candidateprofile.model.CandidateAcademicInfo;
 import com.xloop.resourceloop.candidateprofile.repository.ICandidateAcademicInfoRepository;
 
+
 @Service
 public class CandidateAcademicInfoService {
     @Autowired
@@ -20,7 +21,14 @@ public class CandidateAcademicInfoService {
     public CandidateAcademicInfo getAcademicInformationById(Long id) {
         return academicInfoRepo.findById(id).orElse(null);
     }
-    
+
+    // getAcademicInformationByUserId
+
+    public List<CandidateAcademicInfo> getAcademicInformationByUserId(Long userId) {
+        return academicInfoRepo.findAllByUserId(userId);
+    }
+
+    // get all information
     public List<CandidateAcademicInfo> getAllAcademicInformation(){
         return academicInfoRepo.findAll();
     }
@@ -30,13 +38,14 @@ public class CandidateAcademicInfoService {
         if(academicInformationOptional.isPresent()) {
             CandidateAcademicInfo existingAcademicInformation = academicInformationOptional.get();
             existingAcademicInformation.setCurrentDegree(academicInformation.getCurrentDegree());
-            existingAcademicInformation.setCGPA(academicInformation.getCGPA());
+            existingAcademicInformation.setUserId(academicInformation.getUserId());
+            existingAcademicInformation.setCgpa(academicInformation.getCgpa());
             // existingAcademicInformation.setCertificates(academicInformation.getCertificates());
             existingAcademicInformation.setTitle(academicInformation.getTitle());
             existingAcademicInformation.setInstitute(academicInformation.getInstitute());
-            existingAcademicInformation.setFinal_Year_Project(academicInformation.getFinal_Year_Project());
-            existingAcademicInformation.setDegree_progress(academicInformation.getDegree_progress());
-            existingAcademicInformation.setGraduation_date(academicInformation.getGraduation_date());
+            existingAcademicInformation.setFinalYearProject(academicInformation.getFinalYearProject());
+            existingAcademicInformation.setDegreeProgress(academicInformation.getDegreeProgress());
+            existingAcademicInformation.setGraduationDate(academicInformation.getGraduationDate());
             academicInfoRepo.save(existingAcademicInformation);
             return existingAcademicInformation;
         }
@@ -48,6 +57,5 @@ public class CandidateAcademicInfoService {
     public void deleteAcademicInformation(Long id) {
         academicInfoRepo.deleteById(id);
     }
-
 
 }
