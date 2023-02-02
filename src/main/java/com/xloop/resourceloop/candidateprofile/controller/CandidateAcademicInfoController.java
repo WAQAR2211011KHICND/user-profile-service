@@ -36,7 +36,8 @@ public class CandidateAcademicInfoController {
             return new ResponseEntity<CandidateAcademicInfo>(createdAcademicInformation, HttpStatus.CREATED); 
         }
         
-    @GetMapping
+
+    @GetMapping("")
     public List<CandidateAcademicInfo> getAllAcademicInformation(){
         return academicInfoService.getAllAcademicInformation();
     }

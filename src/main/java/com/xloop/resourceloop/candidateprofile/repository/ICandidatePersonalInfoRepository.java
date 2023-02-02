@@ -7,5 +7,5 @@ import com.xloop.resourceloop.candidateprofile.model.CandidatePersonalInfo;
 
 @Repository
 public interface ICandidatePersonalInfoRepository extends JpaRepository<CandidatePersonalInfo, Long> {
-    
+    public CandidatePersonalInfo findByUserId(Long userId);
 }

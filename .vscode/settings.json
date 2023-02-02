@@ -3,5 +3,6 @@
     "java.configuration.updateBuildConfiguration": "automatic",
     "cSpell.words": [
         "Candidateprofile"
-    ]
+    ],
+    "java.debug.settings.onBuildFailureProceed": true
 }

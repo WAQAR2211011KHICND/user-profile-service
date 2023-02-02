@@ -21,6 +21,9 @@ public class CandidatePersonalInfoService {
     public CandidatePersonalInfo getPersonalInformationById(Long id) {
         return personalInfoRepo.findById(id).orElse(null);
     }
+    public CandidatePersonalInfo getPersonalInformationByUserId(Long userId) {
+        return personalInfoRepo.findByUserId(userId);
+    }
 
     public List<CandidatePersonalInfo> getAllPersonalInformation(){
         return personalInfoRepo.findAll();

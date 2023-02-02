@@ -18,7 +18,7 @@ public class CandidatePersonalInfoController {
     @Autowired
     public CandidatePersonalInfoService PersonalInfoService;
 
-    @PostMapping("")
+    @PostMapping
     public ResponseEntity<CandidatePersonalInfo> createPersonalInformation(
             @RequestBody CandidatePersonalInfo personalInformation) {
         CandidatePersonalInfo createdPersonalInformation = PersonalInfoService
@@ -26,7 +26,7 @@ public class CandidatePersonalInfoController {
         return new ResponseEntity<>(createdPersonalInformation, HttpStatus.CREATED);
     }
 
-    @GetMapping()
+    @GetMapping
     public List<CandidatePersonalInfo> getAllPersonalInformation(){
         return PersonalInfoService.getAllPersonalInformation();
     }
@@ -34,6 +34,14 @@ public class CandidatePersonalInfoController {
     @GetMapping("/{id}")
     public ResponseEntity<CandidatePersonalInfo> getPersonalInformationById(@PathVariable Long id) {
         CandidatePersonalInfo personalInformation = PersonalInfoService.getPersonalInformationById(id);
+        if (personalInformation == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(personalInformation, HttpStatus.OK);
+    }
+    @GetMapping("/users/{userId}")
+    public ResponseEntity<CandidatePersonalInfo> getPersonalInformationByUserId(@PathVariable Long userId) {
+        CandidatePersonalInfo personalInformation = PersonalInfoService.getPersonalInformationByUserId(userId);
         if (personalInformation == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }

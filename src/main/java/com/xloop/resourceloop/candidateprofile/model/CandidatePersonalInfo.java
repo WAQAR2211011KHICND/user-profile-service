@@ -29,10 +29,11 @@ public class CandidatePersonalInfo {
     private String address;
     private String linkedProfile;
     private String maritalStatus;
+    private Long userId;
 
     public CandidatePersonalInfo(String firstName, String lastName, Date dateOfBirth, String gender,
             String nationalIdentityNumber, String phoneNumber, String city, String address, String linkedProfile,
-            String maritalStatus) {
+            String maritalStatus, Long userId) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.dateOfBirth = dateOfBirth;
@@ -43,6 +44,7 @@ public class CandidatePersonalInfo {
         this.address = address;
         this.linkedProfile = linkedProfile;
         this.maritalStatus = maritalStatus;
+        this.userId=userId;
     }
 
     public CandidatePersonalInfo(){};
