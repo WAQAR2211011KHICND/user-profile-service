@@ -10,7 +10,6 @@ import lombok.Setter;
 @Setter
 @Entity
 @NoArgsConstructor
-@AllArgsConstructor
 @Table(name="candidate-skills")
 public class CandidateSkills {
     @Id
@@ -18,7 +17,7 @@ public class CandidateSkills {
     private Long id;
 
     @Column(nullable = false)
-    private Long user_id;
+    private Long userId;
 
     @Column(nullable = false)
     private String skill;
@@ -26,20 +25,12 @@ public class CandidateSkills {
     @Column(nullable = false)
     private Integer proficiency;
 
-    // public CandidateSkills(Long id, Long user_id, List<String> skills) {
-    //     this.id = id;
-    //     this.user_id = user_id;
-    //     this.skills = skills;
-    // }
+    public CandidateSkills(Long userId, String skill, Integer proficiency) {
+        this.userId = userId;
+        this.skill = skill;
+        this.proficiency = proficiency;
+    }
+    
 
-    // public CandidateSkills(Long user_id, List<String> skills) {
-    //     this.user_id = user_id;
-    //     this.skills = skills;
-    // }
-
-    // public CandidateSkills(List<String> skills) {
-    //     this.skills = skills;
-    // }
-    // protected CandidateSkills(){}
     
 }

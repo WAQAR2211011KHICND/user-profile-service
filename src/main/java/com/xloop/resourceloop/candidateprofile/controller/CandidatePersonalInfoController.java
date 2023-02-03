@@ -12,13 +12,13 @@ import com.xloop.resourceloop.candidateprofile.service.CandidatePersonalInfoServ
 
 @CrossOrigin
 @RestController
-@RequestMapping("/api/personal-information")
+@RequestMapping("/api/personal_information")
 public class CandidatePersonalInfoController {
 
     @Autowired
     public CandidatePersonalInfoService PersonalInfoService;
 
-    @PostMapping
+    @PostMapping("")
     public ResponseEntity<CandidatePersonalInfo> createPersonalInformation(
             @RequestBody CandidatePersonalInfo personalInformation) {
         CandidatePersonalInfo createdPersonalInformation = PersonalInfoService
@@ -26,7 +26,7 @@ public class CandidatePersonalInfoController {
         return new ResponseEntity<>(createdPersonalInformation, HttpStatus.CREATED);
     }
 
-    @GetMapping
+    @GetMapping("")
     public List<CandidatePersonalInfo> getAllPersonalInformation(){
         return PersonalInfoService.getAllPersonalInformation();
     }
