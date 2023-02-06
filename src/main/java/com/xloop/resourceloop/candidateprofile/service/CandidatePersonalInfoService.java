@@ -43,6 +43,7 @@ public class CandidatePersonalInfoService {
             existingPersonalInformation.setAddress(personalInformation.getAddress());
             existingPersonalInformation.setLinkedProfile(personalInformation.getLinkedProfile());
             existingPersonalInformation.setMaritalStatus(personalInformation.getMaritalStatus());
+            personalInfoRepo.save(existingPersonalInformation);
             return existingPersonalInformation;
  
         }
