@@ -42,6 +42,7 @@ public class CandidateSkillsController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         else{
+            service.delete(id);
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
     }

@@ -1,5 +1,7 @@
 package com.xloop.resourceloop.candidateprofile.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ByteArrayResource;
 import org.springframework.http.HttpStatus;
@@ -7,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.xloop.resourceloop.candidateprofile.model.CandidateCertificates;
 import com.xloop.resourceloop.candidateprofile.service.CertificatesService;
 
 @RestController
@@ -17,8 +20,12 @@ public class CertificatesController {
     private CertificatesService service;
 
     @PostMapping("/upload")
-    public ResponseEntity<String> uploadFile(@RequestParam(value = "file") MultipartFile file) {
-        return new ResponseEntity<>(service.uploadFile(file), HttpStatus.OK);
+    public ResponseEntity<CandidateCertificates> uploadFile(@RequestParam(value = "file") MultipartFile file,
+            @RequestParam(value = "filename") String name, @RequestParam(value = "userId") Long userid) {
+        List<String> arr = service.uploadFile(file);
+        CandidateCertificates cert = new CandidateCertificates(userid, name, arr.get(1), arr.get(0));
+
+        return new ResponseEntity<>(service.create(cert), HttpStatus.OK);
     }
 
     @GetMapping("/download/{fileName}")
@@ -27,14 +34,34 @@ public class CertificatesController {
         ByteArrayResource resource = new ByteArrayResource(data);
         return ResponseEntity
                 .ok()
+
                 .contentLength(data.length)
                 .header("Content-type", "application/octet-stream")
                 .header("Content-disposition", "attachment; filename=\"" + fileName + "\"")
                 .body(resource);
     }
 
-    @DeleteMapping("/delete/{fileName}")
-    public ResponseEntity<String> deleteFile(@PathVariable String fileName) {
-        return new ResponseEntity<>(service.deleteFile(fileName), HttpStatus.OK);
+    @GetMapping("user/{userId}")
+    public ResponseEntity<List<CandidateCertificates>> getAllCertifcatesByUserId(@PathVariable Long userId) {
+        return new ResponseEntity<>(service.get_all_certificates_of_user(userId), HttpStatus.OK);
+    }
+
+    @GetMapping("/all")
+    public ResponseEntity<List<CandidateCertificates>> getAllCertificates() {
+        return new ResponseEntity<>(service.get_all_certificates(), HttpStatus.OK);
+    }
+
+    @DeleteMapping("/delete")
+    public ResponseEntity<String> deleteFile(@RequestParam(value = "id") Long id,
+            @RequestParam(value = "bucketFileName") String name) {
+        CandidateCertificates existedCert = service.get_certificate_by_id(id);
+        if (existedCert == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        } else {
+            service.deleteCertificate(id);
+            service.deleteFile(name);
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+
     }
 }
