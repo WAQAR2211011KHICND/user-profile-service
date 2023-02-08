@@ -12,6 +12,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.xloop.resourceloop.candidateprofile.model.CandidateCertificates;
 import com.xloop.resourceloop.candidateprofile.service.CertificatesService;
 
+@CrossOrigin
 @RestController
 @RequestMapping("api/file")
 public class CertificatesController {
@@ -21,7 +22,7 @@ public class CertificatesController {
 
     @PostMapping("/upload")
     public ResponseEntity<CandidateCertificates> uploadFile(@RequestParam(value = "file") MultipartFile file,
-            @RequestParam(value = "filename") String name, @RequestParam(value = "userId") Long userid) {
+            @RequestParam(value = "filename") String name, @RequestParam(value = "user_id") Long userid) {
         List<String> arr = service.uploadFile(file);
         CandidateCertificates cert = new CandidateCertificates(userid, name, arr.get(1), arr.get(0));
 
@@ -53,7 +54,7 @@ public class CertificatesController {
 
     @DeleteMapping("/delete")
     public ResponseEntity<String> deleteFile(@RequestParam(value = "id") Long id,
-            @RequestParam(value = "bucketFileName") String name) {
+            @RequestParam(value = "bucket_filename") String name) {
         CandidateCertificates existedCert = service.get_certificate_by_id(id);
         if (existedCert == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
