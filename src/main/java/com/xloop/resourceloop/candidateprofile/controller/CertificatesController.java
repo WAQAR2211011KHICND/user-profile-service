@@ -22,9 +22,9 @@ public class CertificatesController {
 
     @PostMapping("/upload")
     public ResponseEntity<CandidateCertificates> uploadFile(@RequestParam(value = "file") MultipartFile file,
-            @RequestParam(value = "filename") String name, @RequestParam(value = "user_id") Long userid) {
+            @RequestParam(value = "filename") String name, @RequestParam(value = "user_id") Long userid,@RequestParam String category) {
         List<String> arr = service.uploadFile(file);
-        CandidateCertificates cert = new CandidateCertificates(userid, name, arr.get(1), arr.get(0));
+        CandidateCertificates cert = new CandidateCertificates(userid, name, arr.get(1), arr.get(0), category);
 
         return new ResponseEntity<>(service.create(cert), HttpStatus.OK);
     }

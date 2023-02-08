@@ -31,13 +31,18 @@ public class CandidateCertificates {
     @Setter
     @Column(nullable = false)
     private String bucketFileName;
+    
+    @Setter
+    @Column(nullable = false)
+    private String category;
 
 
-    public CandidateCertificates (long userId, String originalFileName, String url, String bucketFileName){
+    public CandidateCertificates (long userId, String originalFileName, String url, String bucketFileName, String category){
         this.userId= userId;
         this.originalFileName = originalFileName;
         this.url= url;
         this.bucketFileName = bucketFileName;
+        this.category = category;
 
     }
     
