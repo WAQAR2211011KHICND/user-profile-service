@@ -52,15 +52,14 @@ public class CertificatesController {
         return new ResponseEntity<>(service.get_all_certificates(), HttpStatus.OK);
     }
 
-    @DeleteMapping("/delete")
-    public ResponseEntity<String> deleteFile(@RequestParam(value = "id") Long id,
-            @RequestParam(value = "bucket_filename") String name) {
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<String> deleteFile(@PathVariable Long id) {
         CandidateCertificates existedCert = service.get_certificate_by_id(id);
         if (existedCert == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         } else {
+            service.deleteFile(existedCert.getBucketFileName());
             service.deleteCertificate(id);
-            service.deleteFile(name);
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
 
