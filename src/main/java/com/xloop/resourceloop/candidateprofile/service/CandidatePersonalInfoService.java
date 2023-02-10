@@ -29,6 +29,10 @@ public class CandidatePersonalInfoService {
         return personalInfoRepo.findAll();
     }
 
+    public List<CandidatePersonalInfo> getAllUsersByGivenIds(List<Long> userIds) {
+        return personalInfoRepo.findAllByUserIdIn(userIds);
+    }
+
     public CandidatePersonalInfo updatePersonalInformation(Long id, CandidatePersonalInfo personalInformation){
         Optional<CandidatePersonalInfo> personalInformationOptional = personalInfoRepo.findById(id);
         if(personalInformationOptional.isPresent()) {

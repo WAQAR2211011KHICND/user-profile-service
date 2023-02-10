@@ -70,4 +70,9 @@ public class CandidatePersonalInfoController {
         }
     }
 
+    @GetMapping("/users/list/{userIds}")
+    public List<CandidatePersonalInfo> getAllUsersByGivenIds(@PathVariable List<Long> userIds) {
+        return PersonalInfoService.getAllUsersByGivenIds(userIds);
+    }
+
 }
