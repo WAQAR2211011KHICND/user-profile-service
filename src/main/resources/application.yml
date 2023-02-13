@@ -1,8 +1,8 @@
 cloud:
   aws:
     credentials:
-      access-key: AKIA22J7BOGYO6RQEREA
-      secret-key: 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
+      access-key: AKIA4HFV4LGCTMLX5TEQ
+      secret-key: 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
     region:
       static: us-east-1
     stack:
@@ -11,16 +11,16 @@ cloud:
 
 application:
   bucket:
-    name: certificates-storage
+    name: user-profile-service-bucket
 
 
 spring:
   servlet:
     multipart:
       enabled: true
-      file-size-threshold: 2MB
-      max-file-size: 5MB
-      max-request-size: 10MB
+      file-size-threshold: 200MB
+      max-file-size: 500MB
+      max-request-size: 100MB
 
 server:
   port: 5000
