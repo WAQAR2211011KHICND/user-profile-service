@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import com.xloop.resourceloop.candidateprofile.model.CandidatePersonalInfo;
 import com.xloop.resourceloop.candidateprofile.repository.ICandidatePersonalInfoRepository;
 
-@Service
+@Service 
 public class CandidatePersonalInfoService {
     @Autowired
     public ICandidatePersonalInfoRepository personalInfoRepo;
